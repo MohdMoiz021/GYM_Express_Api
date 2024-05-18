@@ -19,8 +19,9 @@ app.use(cors({
 }));
 
 // Routes
-const gymRoutes = require('./routes/gymRoutes');
-app.use('/api/gyms', gymRoutes);
+app.get('/api/gyms', (req, res) => {
+    res.json({ message: 'Hello from the API!' });
+});
 
 // Starting the server
 const PORT = process.env.PORT || 3000;

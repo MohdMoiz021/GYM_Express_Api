@@ -12,7 +12,7 @@ mongoose.connect(conStr);
 // Middleware
 app.use(bodyParser.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use(cors());
+
 
 // Routes
 const gymRoutes = require('./routes/gymRoutes');

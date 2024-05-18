@@ -5,7 +5,7 @@ const path = require('path');
 const cors=require('cors')
 const app = express();
 
-// Database connection
+// Database connection is 
 const conStr='mongodb+srv://admin:admin@cluster0.qcdda.mongodb.net/gym'
 mongoose.connect(conStr);
 

@@ -27,29 +27,29 @@ class GymController {
             const gyms = await gymRepository.findAll();
             // const count=await gymRepository.getCount()
            
-            const response={
-                // count:count,
-                data:data
-            }
-            const options = {
-                page,
-                size,
-                sort,
-                direction,
-                search
-            };
+            // const options = {
+            //     page,
+            //     size,
+            //     sort,
+            //     direction,
+            //     search
+            // };
+            // const data = await gymRepository.findAll(options);
+            // const response={
+            //     // count:count,
+            //     data:data
+            // }
+          
     
-            const data = await gymRepository.findAll(options);
-    
-            const transformedData = data.map(item => {
-                return {
-                    ...item._doc,
-                    image: item._doc.image ? `${req.protocol}://${req.get('host')}/${item._doc.image}` : undefined
-                }
-            });
+            // const transformedData = data.map(item => {
+            //     return {
+            //         ...item._doc,
+            //         image: item._doc.image ? `${req.protocol}://${req.get('host')}/${item._doc.image}` : undefined
+            //     }
+            // });
     
     
-            res.status(200).json(response);
+            res.status(200).json(gyms);
         } catch (error) {
             res.status(500).json({ error: error.message });
         }

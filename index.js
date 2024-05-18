@@ -14,14 +14,9 @@ app.use(bodyParser.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(cors());
 
-app.use(cors({
-    origin: 'http://localhost:5173'
-}));
-
 // Routes
-app.get('/api/gyms', (req, res) => {
-    res.json({ message: 'Hello from the API!' });
-});
+const gymRoutes = require('./routes/gymRoutes');
+app.use('/api/gyms', gymRoutes);
 
 // Starting the server
 const PORT = process.env.PORT || 3000;

@@ -15,6 +15,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(cors());
 
 // Routes
+//ROuting
 const gymRoutes = require('./routes/gymRoutes');
 app.use('/api/gyms', gymRoutes);
 

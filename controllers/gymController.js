@@ -26,11 +26,29 @@ class GymController {
             const limit=+req.params.limit;
             const gyms = await gymRepository.findAll();
             // const count=await gymRepository.getCount()
-            const data=await gymRepository.findAll(page,limit)
+           
             const response={
                 // count:count,
                 data:data
             }
+            const options = {
+                page,
+                size,
+                sort,
+                direction,
+                search
+            };
+    
+            const data = await gymRepository.findAll(options);
+    
+            const transformedData = data.map(item => {
+                return {
+                    ...item._doc,
+                    image: item._doc.image ? `${req.protocol}://${req.get('host')}/${item._doc.image}` : undefined
+                }
+            });
+    
+    
             res.status(200).json(response);
         } catch (error) {
             res.status(500).json({ error: error.message });

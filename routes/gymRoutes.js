@@ -1,5 +1,7 @@
 const express = require('express');
 const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
 const gymController = require('../controllers/gymController');
 
 const router = express.Router();

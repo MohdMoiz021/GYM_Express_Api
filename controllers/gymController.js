@@ -25,6 +25,11 @@ class GymController {
             const page=+req.params.page;
             const limit=+req.params.limit;
             const gyms = await gymRepository.findAll();
+            if (gyms.photo) {
+                const protocol = req.protocol;
+                const domain = req.get('host');
+                gyms.photo = `${protocol}://${domain}/${data.image}`;
+            }
             // const count=await gymRepository.getCount()
            
             // const options = {
@@ -47,7 +52,12 @@ class GymController {
             //         image: item._doc.image ? `${req.protocol}://${req.get('host')}/${item._doc.image}` : undefined
             //     }
             // });
-    
+            // const transformedData = gyms.map(item => {
+            //     return {
+            //         ...item._doc,
+            //         image: item._doc.photo ? `${req.protocol}://${req.get('host')}/${item._doc.photo}` : undefined
+            //     }
+            // });
     
             res.status(200).json(gyms);
         } catch (error) {

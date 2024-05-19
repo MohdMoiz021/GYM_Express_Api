@@ -15,7 +15,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(cors());
 // Optionally, configure CORS to allow requests from specific origins
 app.use(cors({
-    origin: 'http://localhost:5173'
+    origin: 'http://localhost:5174'
 }));
 // Routes
 //ROuting

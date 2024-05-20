@@ -25,10 +25,12 @@ class GymController {
             const page=+req.params.page;
             const limit=+req.params.limit;
             const gyms = await gymRepository.findAll();
-            if (gyms.photo) {
-                const protocol = req.protocol;
-                const domain = req.get('host');
-                gyms.photo = `${protocol}://${domain}/${data.image}`;
+            for (let i = 0; i < gyms.length; i++) {
+                if (gyms[i].photo) {
+                    const protocol = req.protocol;
+                    const domain = req.get('host');
+                    gyms[i].photo = `${protocol}://${domain}/${gyms[i].photo}`;
+                }
             }
             // const count=await gymRepository.getCount()
            

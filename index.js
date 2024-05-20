@@ -11,11 +11,11 @@ mongoose.connect(conStr);
 
 // Middleware
 app.use(bodyParser.json());
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(express.static(path.join(__dirname, 'uploads')));
 app.use(cors());
 // Optionally, configure CORS to allow requests from specific origins
 app.use(cors({
-    origin: 'http://localhost:5174'
+    origin: 'http://localhost:5173'
 }));
 // Routes
 //ROuting
